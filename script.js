@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('noBtn');
     const nextToFlowerBtn = document.getElementById('nextToFlowerBtn');
     const flowerNextBtn = document.getElementById('flowerNextBtn');
+    const finalBackToMenu = document.getElementById('finalBackToMenu');
     
     // Create background music element
     const music = new Audio('calm.mp3');
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sub = "hope you had a lovely day today...";
         img = "afternoon.jpg";
     }
-    bgElement.style.backgroundImage = `url('./${img}')`;
+    bgElement.style.backgroundImage = `url('${img}')`;
 
     // 4. ANIMATION & TRANSITION HELPERS
     function oliveTalks() {
@@ -152,6 +153,33 @@ document.addEventListener('DOMContentLoaded', () => {
         flowerScreen.style.display = 'none';
         finalScreen.style.display = 'flex';
         finalScreen.classList.add('fade-in');
+    }
+
+    function goBackToMenu() {
+        if(clickSound) clickSound.play();
+        
+        // Hide all screens
+        startScreen.style.display = 'none';
+        messageScreen.style.display = 'none';
+        moodScreen.style.display = 'none';
+        feelBetterScreen.style.display = 'none';
+        knewYouWouldScreen.style.display = 'none';
+        flowerScreen.style.display = 'none';
+        finalScreen.style.display = 'none';
+        
+        // Clear any dynamic content
+        const oliveDiv = document.getElementById('oliveDiv');
+        const niceDiv = document.getElementById('niceDiv');
+        const talkDiv = document.getElementById('talkDiv');
+        if(oliveDiv) oliveDiv.remove();
+        if(niceDiv) niceDiv.remove();
+        if(talkDiv) talkDiv.remove();
+        
+        // Show response screen with menu
+        responseScreen.style.display = 'flex';
+        responseMessage.style.display = 'block';
+        responseMessage.textContent = "what would you like to do?";
+        buttonContainer.style.display = 'flex';
     }
 
     function goToFeelBetterScreen() {
@@ -272,6 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Flower screen next button goes to final screen
     flowerNextBtn.onclick = goToFinalScreen;
+    
+    // Final screen back to menu button
+    finalBackToMenu.onclick = goBackToMenu;
 
     // 7. BUTTON MENU ACTIONS
     // DR. OLIVE
@@ -353,8 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
         talkDiv.innerHTML = `
             <p id="niceText">you can always send Marwan a "." and he'll be so happy to talk to you : )</p>
             <button class="response-btn" id="talkNext">next</button>
-            <button class="response-btn" onclick="location.reload()" style="margin-top: 10px;">back to menu</button>
+            <button class="response-btn" id="talkBackToMenu" style="margin-top: 10px;">back to menu</button>
         `;
         document.getElementById('talkNext').onclick = goToFeelBetterScreen;
+        document.getElementById('talkBackToMenu').onclick = goBackToMenu;
     };
 });

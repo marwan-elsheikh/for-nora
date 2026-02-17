@@ -1,7 +1,7 @@
 /* --- FONTS & DEFAULTS --- */
 @font-face {
     font-family: 'Minecraft';
-    src: url('./BERKY.ttf') format('truetype');
+    src: url('BERKY.ttf') format('truetype');
 }
 
 * {
