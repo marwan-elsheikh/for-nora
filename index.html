@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for Nora : )</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="background"></div>
+    <div class="overlay"></div>
+
+    <div class="container">
+        
+        <div id="startScreen" style="display: flex;">
+            <button id="startBtn">start</button>
+        </div>
+
+        <div id="messageScreen">
+            <h1 id="greetingText"></h1>
+            <p id="subtitleText"></p>
+        </div>
+
+        <div id="moodScreen">
+            <h2 id="moodQuestion">how are you feeling today, Nora?</h2>
+            
+            <div id="sliderContainer" class="slider-container">
+                <div id="emojiDisplay" class="emoji-display">😐</div>
+                <div class="slider-labels">
+                    <span>not great</span>
+                    <span>amazing</span>
+                </div>
+                <input type="range" id="moodSlider" min="0" max="100" value="50">
+            </div>
+
+            <button id="confirmBtn" style="display: none;">okay</button>
+        </div>
+
+        <div id="responseScreen">
+            <p id="responseMessage"></p>
+            
+            <div id="buttonContainer">
+                <button class="response-btn" id="drOliveBtn">i want dr. olive</button>
+                <button class="response-btn" id="niceThingBtn">show me something nice</button>
+                <button class="response-btn" id="talkBtn">i want to talk</button>
+            </div>
+        </div>
+
+        <div id="feelBetterScreen">
+            <h2 id="feelBetterQuestion">do you feel better now?</h2>
+            <div id="feelBetterButtons">
+                <button class="response-btn" id="noBtn">no</button>
+                <button class="response-btn" id="yesBtn">yes</button>
+            </div>
+        </div>
+
+        <div id="knewYouWouldScreen">
+            <p id="knewYouWouldText">i knew you'd like it!</p>
+            <button class="response-btn" id="nextToFlowerBtn">next</button>
+        </div>
+
+        <div id="flowerScreen">
+            <h2 id="flowerTitle">palestinian flower of the day</h2>
+            
+            <div id="flowerDisplay">
+                <img id="palestineFlowerImg" src="" alt="Flower of Palestine">
+            </div>
+
+            <div class="flower-info">
+                <h3 id="flowerName"></h3>
+                <p id="flowerOrigin"><strong>found in:</strong> <span></span></p>
+                <p id="flowerSignificance"></p>
+                
+                <div class="fun-fact-box">
+                    <strong>fun fact:</strong> <span id="flowerFunFact"></span>
+                </div>
+            </div>
+
+            <button class="response-btn" id="flowerNextBtn" style="margin-top: 30px;">next</button>
+        </div>
+
+        <div id="finalScreen">
+            <p id="finalMessage">U da real palestinian flower of the day 🙄</p>
+            <button class="response-btn" onclick="location.reload()" style="margin-top: 30px;">back to menu</button>
+        </div>
+
+    </div>
+
+    <audio id="clickSound">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

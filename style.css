@@ -1,0 +1,355 @@
+/* --- FONTS & DEFAULTS --- */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('./BERKY.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    margin: 0; 
+    padding: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Minecraft', sans-serif !important;
+}
+
+/* --- BACKGROUND LAYERS --- */
+#background {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0; 
+    transition: background-color 1s ease, background-image 1s ease;
+}
+
+.overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
+    transition: opacity 1s ease;
+}
+
+/* --- MAIN CONTAINER --- */
+.container {
+    position: relative; 
+    z-index: 10; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    width: 100vw;
+    text-align: center;
+}
+
+/* Each screen is hidden by default unless JS changes display to 'flex' */
+.container > div {
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- GREETING SCREEN (WHITE TEXT) --- */
+#greetingText {
+    color: #FFFFFF !important;
+    font-size: 2.5rem;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); 
+    opacity: 0;
+    margin: 0;
+}
+
+#subtitleText {
+    color: #FFFFFF !important;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+}
+
+/* --- MOOD & RESPONSE TEXT (BLACK TEXT FOR BLUE BG) --- */
+#moodQuestion, 
+#responseMessage, 
+#niceText, 
+#oliveSpeech, 
+#flowerTitle,
+#feelBetterQuestion,
+#knewYouWouldText,
+#finalMessage {
+    color: #000000 !important;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    width: 90%;
+    line-height: 1.4;
+}
+
+/* --- BUTTONS (MINECRAFT STYLE) --- */
+#startBtn, .response-btn, #confirmBtn {
+    font-family: 'Minecraft', sans-serif !important;
+    font-size: 1rem;
+    text-transform: lowercase;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #3F3F3F;
+    background-color: #707070;
+    border: 3px solid #000;
+    padding: 12px 0;
+    width: 280px;
+    cursor: pointer;
+    box-shadow: inset -3px -3px #333, inset 3px 3px #AAA;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+#startBtn:active, .response-btn:active, #confirmBtn:active {
+    box-shadow: inset 3px 3px #333, inset -3px -3px #AAA;
+}
+
+/* --- SLIDER STYLES --- */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.emoji-display {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#moodSlider {
+    width: 280px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* --- DR. OLIVE & ANIMATIONS --- */
+.olive-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: oliveFloat 3s ease-in-out infinite;
+    transition: transform 0.1s;
+}
+
+@keyframes oliveFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.olive-talk {
+    animation: oliveWobble 0.4s ease-in-out infinite;
+}
+
+@keyframes oliveWobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+}
+
+.breathing-circle {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #000;
+    margin-bottom: 20px;
+    transition: transform 4s ease-in-out; 
+}
+
+.inhale { transform: scale(1.6); }
+
+/* --- FLOWER SCREEN --- */
+#flowerScreen {
+    text-align: center;
+}
+
+#palestineFlowerImg {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.flower-info {
+    max-width: 320px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#flowerOrigin {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-transform: lowercase;
+}
+
+#flowerSignificance {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.fun-fact-box {
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px dashed #000;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+/* --- NAVIGATION MENU --- */
+#buttonContainer {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+/* --- FEEL BETTER BUTTONS --- */
+#feelBetterButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 80px;
+}
+
+#noBtn {
+    font-family: 'Minecraft', sans-serif !important;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #7F0000;
+    background-color: #FF4444;
+    border: 3px solid #000;
+    padding: 15px 40px;
+    cursor: pointer;
+    box-shadow: inset -3px -3px #CC0000, inset 3px 3px #FF8888;
+    outline: none;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#noBtn:active {
+    box-shadow: inset 3px 3px #CC0000, inset -3px -3px #FF8888;
+}
+
+#noBtn.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#yesBtn {
+    font-family: 'Minecraft', sans-serif !important;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #005500;
+    background-color: #44FF44;
+    border: 3px solid #000;
+    padding: 15px 40px;
+    cursor: pointer;
+    box-shadow: inset -3px -3px #00CC00, inset 3px 3px #88FF88;
+    outline: none;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 2;
+}
+
+#yesBtn:active {
+    box-shadow: inset 3px 3px #00CC00, inset -3px -3px #88FF88;
+}
+
+#yesBtn.expand-stage-1 {
+    transform: scale(1.5);
+    padding: 20px 50px;
+}
+
+#yesBtn.expand-stage-2 {
+    transform: scale(2.5);
+    padding: 25px 60px;
+}
+
+#yesBtn.expand-stage-3 {
+    transform: scale(4);
+    padding: 35px 80px;
+    font-size: 1.5rem;
+}
+
+#yesBtn.expand-final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(1);
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    text-shadow: 4px 4px #005500;
+}
+
+/* --- SEQUENTIAL ANIMATIONS --- */
+.fade-in-greeting {
+    animation: simpleFade 2.5s ease-in-out forwards;
+}
+
+.fade-in-subtitle {
+    animation: simpleFade 2.5s ease-in-out forwards;
+    animation-delay: 2.5s; /* Fires after the greeting finishes */
+}
+
+.fade-in {
+    animation: simpleFade 1s ease-in-out forwards;
+}
+
+@keyframes simpleFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
